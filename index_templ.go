@@ -36,7 +36,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html><head><title>AWS Region Pinger</title><style>\n            body {\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n                max-width: 1200px;\n                margin: 0 auto;\n                padding: 20px;\n                background: #f5f5f5;\n            }\n            .client-ping {\n                background: white;\n                padding: 15px;\n                margin-bottom: 20px;\n                border-radius: 4px;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n            }\n            .client-ping .value {\n                font-family: monospace;\n                font-weight: bold;\n            }\n            table {\n                width: 100%;\n                border-collapse: collapse;\n                background: white;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n                border-radius: 4px;\n            }\n            th, td {\n                padding: 12px;\n                text-align: left;\n                border-bottom: 1px solid #eee;\n            }\n            th {\n                background: #f8f9fa;\n                font-weight: 600;\n            }\n            .status {\n                min-width: 80px;\n                display: inline-block;\n            }\n            .pending {\n                color: #666;\n                font-style: italic;\n            }\n            .error {\n                color: #dc3545;\n            }\n            .latency {\n                font-family: monospace;\n                font-size: 14px;\n                min-width: 80px;\n            }\n        </style></head><body><h1>AWS Region Pinger</h1><div class=\"client-ping\">Your ping: <span class=\"value\" id=\"clientPing\">Measuring...</span></div><table id=\"results\"><thead><tr><th>Region</th><th>Code</th><th>Latency</th><th>Status</th></tr></thead> <tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html><head><title>AWS Region Pinger</title><style>\n            body {\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n                max-width: 1200px;\n                margin: 0 auto;\n                padding: 20px;\n                background: #f5f5f5;\n            }\n            .client-ping {\n                background: white;\n                padding: 15px;\n                margin-bottom: 20px;\n                border-radius: 4px;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n            }\n            .client-ping .value {\n                font-family: monospace;\n                font-weight: bold;\n            }\n            table {\n                width: 100%;\n                border-collapse: collapse;\n                background: white;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n                border-radius: 4px;\n            }\n            th, td {\n                padding: 12px;\n                text-align: left;\n                border-bottom: 1px solid #eee;\n            }\n            th {\n                background: #f8f9fa;\n                font-weight: 600;\n            }\n            .error {\n                color: #dc3545;\n            }\n            .latency {\n                font-family: monospace;\n                font-size: 14px;\n                min-width: 80px;\n            }\n        </style></head><body><h1>AWS Region Pinger</h1><div class=\"client-ping\">Your ping: <span class=\"value\" id=\"clientPing\">Measuring...</span></div><table id=\"results\"><thead><tr><th>Region</th><th>Code</th><th>Latency</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -48,7 +48,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(region.Code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 84, Col: 47}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 75, Col: 47}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -61,7 +61,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(region.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 85, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 76, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -74,18 +74,18 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(region.Code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 86, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 77, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</td><td class=\"latency\">Pending...</td><td class=\"status pending\">Pinging...</td></tr>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</td><td class=\"latency\">Pending...</td></tr>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</tbody></table><script>\n            const clientPingElement = document.getElementById('clientPing');\n            const evtSource = new EventSource('/ping');\n            \n            evtSource.onmessage = (event) => {\n                const result = JSON.parse(event.data);\n                \n                // Update client ping if available\n                if (result.clientPing !== undefined) {\n                    clientPingElement.textContent = result.clientPing.toFixed(2) + ' ms';\n                }\n                \n                // Find the row\n                const row = document.querySelector('tr[data-code=\"' + result.code + '\"]');\n                if (!row) return;\n                \n                // Update latency and status\n                const latencyCell = row.querySelector('.latency');\n                const statusCell = row.querySelector('.status');\n                \n                if (result.error) {\n                    latencyCell.textContent = 'N/A';\n                    statusCell.textContent = result.error;\n                    statusCell.className = 'status error';\n                } else {\n                    latencyCell.textContent = result.latency.toFixed(2) + ' ms';\n                    statusCell.textContent = 'Success';\n                    statusCell.className = 'status';\n                }\n            };\n            \n            evtSource.onerror = () => {\n                console.error('EventSource failed');\n            };\n        </script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</tbody></table><script>\n            const clientPingElement = document.getElementById('clientPing');\n            const evtSource = new EventSource('/ping');\n            \n            evtSource.onmessage = (event) => {\n                const result = JSON.parse(event.data);\n                \n                // Update client ping if available\n                if (result.clientPing !== undefined) {\n                    clientPingElement.textContent = result.clientPing.toFixed(2) + ' ms';\n                }\n                \n                // Find the row\n                const row = document.querySelector('tr[data-code=\"' + result.code + '\"]');\n                if (!row) return;\n                \n                // Update latency and status\n                const latencyCell = row.querySelector('.latency');\n                \n                if (result.error) {\n                    latencyCell.textContent = 'N/A';\n                } else {\n                    latencyCell.textContent = result.latency.toFixed(2) + ' ms';\n                }\n            };\n            \n            evtSource.onerror = () => {\n                console.error('EventSource failed');\n            };\n        </script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

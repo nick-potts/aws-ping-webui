@@ -47,14 +47,6 @@ templ page(regions []awsping.AWSRegion) {
                 background: #f8f9fa;
                 font-weight: 600;
             }
-            .status {
-                min-width: 80px;
-                display: inline-block;
-            }
-            .pending {
-                color: #666;
-                font-style: italic;
-            }
             .error {
                 color: #dc3545;
             }
@@ -76,7 +68,6 @@ templ page(regions []awsping.AWSRegion) {
                     <th>Region</th>
                     <th>Code</th>
                     <th>Latency</th>
-                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +76,6 @@ templ page(regions []awsping.AWSRegion) {
                         <td>{ region.Name }</td>
                         <td>{ region.Code }</td>
                         <td class="latency">Pending...</td>
-                        <td class="status pending">Pinging...</td>
                     </tr>
                 }
             </tbody>
@@ -109,16 +99,11 @@ templ page(regions []awsping.AWSRegion) {
                 
                 // Update latency and status
                 const latencyCell = row.querySelector('.latency');
-                const statusCell = row.querySelector('.status');
                 
                 if (result.error) {
                     latencyCell.textContent = 'N/A';
-                    statusCell.textContent = result.error;
-                    statusCell.className = 'status error';
                 } else {
                     latencyCell.textContent = result.latency.toFixed(2) + ' ms';
-                    statusCell.textContent = 'Success';
-                    statusCell.className = 'status';
                 }
             };
             
