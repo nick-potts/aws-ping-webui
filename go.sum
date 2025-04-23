@@ -1,3 +1,5 @@
+github.com/a-h/templ v0.3.857 h1:6EqcJuGZW4OL+2iZ3MD+NnIcG7nGkaQeF2Zq5kf9ZGg=
+github.com/a-h/templ v0.3.857/go.mod h1:qhrhAkRFubE7khxLZHsBFHfX+gWwVNKbzKeF9GlPV4M=
 github.com/ekalinin/awsping v1.9.999999 h1:FnzuKZei/KGnaZL1h9LEkj1Sc4702VrNx7+IOyrusp0=
 github.com/ekalinin/awsping v1.9.999999/go.mod h1:bv/8h1uS88crSqcKZLD3GbjP/aXDjHMJWBE+GFixaAU=
 golang.org/x/net v0.39.0 h1:ZCu7HMWDxpXpaiKdhzIfaltL9Lp31x/3fCP11bc6/fY=
