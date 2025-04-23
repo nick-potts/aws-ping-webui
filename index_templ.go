@@ -36,7 +36,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html><head><title>AWS Region Pinger</title><style>\n            body {\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n                max-width: 1200px;\n                margin: 0 auto;\n                padding: 20px;\n                background: #f5f5f5;\n            }\n            .client-ping {\n                background: white;\n                padding: 15px;\n                margin-bottom: 20px;\n                border-radius: 4px;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n            }\n            .client-ping .value {\n                font-family: monospace;\n                font-weight: bold;\n            }\n            table {\n                width: 100%;\n                border-collapse: collapse;\n                background: white;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n                border-radius: 4px;\n            }\n            th, td {\n                padding: 12px;\n                text-align: left;\n                border-bottom: 1px solid #eee;\n            }\n            th {\n                background: #f8f9fa;\n                font-weight: 600;\n            }\n            .status {\n                min-width: 80px;\n                display: inline-block;\n            }\n            .pending {\n                color: #666;\n                font-style: italic;\n            }\n            .error {\n                color: #dc3545;\n            }\n            .latency {\n                font-family: monospace;\n                font-size: 14px;\n            }\n        </style></head><body><h1>AWS Region Pinger</h1><div class=\"client-ping\">Your ping: <span class=\"value\" id=\"clientPing\">Measuring...</span></div><table id=\"results\"><thead><tr><th>Region</th><th>Code</th><th>Latency</th><th>Status</th></tr></thead> <tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html><head><title>AWS Region Pinger</title><style>\n            body {\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n                max-width: 1200px;\n                margin: 0 auto;\n                padding: 20px;\n                background: #f5f5f5;\n            }\n            .client-ping {\n                background: white;\n                padding: 15px;\n                margin-bottom: 20px;\n                border-radius: 4px;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n            }\n            .client-ping .value {\n                font-family: monospace;\n                font-weight: bold;\n            }\n            table {\n                width: 100%;\n                border-collapse: collapse;\n                background: white;\n                box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n                border-radius: 4px;\n            }\n            th, td {\n                padding: 12px;\n                text-align: left;\n                border-bottom: 1px solid #eee;\n            }\n            th {\n                background: #f8f9fa;\n                font-weight: 600;\n            }\n            .status {\n                min-width: 80px;\n                display: inline-block;\n            }\n            .pending {\n                color: #666;\n                font-style: italic;\n            }\n            .error {\n                color: #dc3545;\n            }\n            .latency {\n                font-family: monospace;\n                font-size: 14px;\n                min-width: 80px;\n            }\n        </style></head><body><h1>AWS Region Pinger</h1><div class=\"client-ping\">Your ping: <span class=\"value\" id=\"clientPing\">Measuring...</span></div><table id=\"results\"><thead><tr><th>Region</th><th>Code</th><th>Latency</th><th>Status</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -48,7 +48,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(region.Code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 83, Col: 47}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 84, Col: 47}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -61,7 +61,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(region.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 84, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 85, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -74,7 +74,7 @@ func page(regions []awsping.AWSRegion) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(region.Code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 85, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 86, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
