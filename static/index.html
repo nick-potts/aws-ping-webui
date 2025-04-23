@@ -10,6 +10,17 @@
             padding: 20px;
             background: #f5f5f5;
         }
+        .client-ping {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .client-ping .value {
+            font-family: monospace;
+            font-weight: bold;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -41,6 +52,9 @@
 </head>
 <body>
     <h1>AWS Region Pinger</h1>
+    <div class="client-ping">
+        Your ping: <span class="value" id="clientPing">Measuring...</span>
+    </div>
     <table id="results">
         <thead>
             <tr>
@@ -55,10 +69,16 @@
 
     <script>
         const tbody = document.querySelector('#results tbody');
+        const clientPingElement = document.getElementById('clientPing');
         const evtSource = new EventSource('/ping');
         
         evtSource.onmessage = (event) => {
             const result = JSON.parse(event.data);
+            
+            // Update client ping if available
+            if (result.clientPing !== undefined) {
+                clientPingElement.textContent = `${result.clientPing.toFixed(2)} ms`;
+            }
             
             // Try to find existing row
             let row = document.querySelector(`tr[data-code="${result.code}"]`);
