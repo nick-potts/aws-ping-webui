@@ -204,9 +204,136 @@ func streamHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("Finished streaming all results")
 }
 
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	regions := awsping.GetRegions()
+
+	// Start of HTML
+	fmt.Fprint(w, `<!DOCTYPE html>
+<html>
+<head>
+    <title>AWS Region Pinger</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .client-ping {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .client-ping .value {
+            font-family: monospace;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .pending {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .latency {
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AWS Region Pinger</h1>
+    <div class="client-ping">
+        Your ping: <span class="value" id="clientPing">Measuring...</span>
+    </div>
+    <table id="results">
+        <thead>
+            <tr>
+                <th>Region</th>
+                <th>Code</th>
+                <th>Latency</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>`)
+
+	// Add each region
+	for _, region := range regions {
+		fmt.Fprintf(w, `
+            <tr data-code="%s">
+                <td>%s</td>
+                <td>%s</td>
+                <td class="latency">Pending...</td>
+                <td class="status pending">Pinging...</td>
+            </tr>`, region.Code, region.Name, region.Code)
+	}
+
+	// End of HTML
+	fmt.Fprint(w, `
+        </tbody>
+    </table>
+
+    <script>
+        const tbody = document.querySelector('#results tbody');
+        const clientPingElement = document.getElementById('clientPing');
+        const evtSource = new EventSource('/ping');
+        
+        evtSource.onmessage = (event) => {
+            const result = JSON.parse(event.data);
+            
+            // Update client ping if available
+            if (result.clientPing !== undefined) {
+                clientPingElement.textContent = result.clientPing.toFixed(2) + ' ms';
+            }
+            
+            // Find the row
+            const row = document.querySelector('tr[data-code="' + result.code + '"]');
+            if (!row) return;
+            
+            // Update latency and status
+            const latencyCell = row.querySelector('.latency');
+            const statusCell = row.querySelector('.status');
+            
+            if (result.error) {
+                latencyCell.textContent = 'N/A';
+                statusCell.textContent = result.error;
+                statusCell.className = 'status error';
+            } else {
+                latencyCell.textContent = result.latency.toFixed(2) + ' ms';
+                statusCell.textContent = 'Success';
+                statusCell.className = 'status';
+            }
+        };
+        
+        evtSource.onerror = () => {
+            console.error('EventSource failed');
+        };
+    </script>
+</body>
+</html>`)
+}
+
 func main() {
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
+	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/ping", streamHandler)
 
 	port := os.Getenv("PORT")
